@@ -31,6 +31,10 @@ class Game:
         grid = [
             [Cell(self, self.cell_w, self.cell_h, x, y) for x in range(self.cols)] for y in range(self.rows)
         ]
+        for offset in [(8, 8), (16, 16), (24, 24)]:
+            for y, row in enumerate(TEMPLATE_REPLICATOR):
+                for x, state in enumerate(row):
+                    grid[y + offset[0]][x + offset[1]].state = state
         return grid
 
     def update(self):
