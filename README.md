@@ -6,14 +6,14 @@ Conway's Game of Life - written in pygame
 - Create a virtualenv
 - $ pip install pygame
 - $ python main.py
-- Enjoy
+- Enjoy!
 
 ## Instructions
 
 While paused, click cells to draw. 
 
 - spacebar - toggle pause
-- escape - toggle pause
+- escape - reset game!
 - numpad-plus - speed up game
 - numpad-minus - speed down game
 - q - quit
