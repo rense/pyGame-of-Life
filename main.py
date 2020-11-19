@@ -132,7 +132,7 @@ class GameOfLife:
         if self.state == GAME_STATE_CONFIG:
             return
         self.state = GAME_STATE_CONFIG
-        # self.game.grid = self.game.make_grid()
+        self.game.grid = self.game.make_grid()
         print(GAME_STATES[self.state])
 
     def cursor_on_grid(self, pos):

@@ -31,9 +31,6 @@ class Game:
         grid = [
             [Cell(self, self.cell_w, self.cell_h, x, y) for x in range(self.cols)] for y in range(self.rows)
         ]
-        for y, row in enumerate(TEMPLATE_GOSPER_GLIDER_GUN):
-            for x, state in enumerate(row):
-                grid[y][x].state = state
         return grid
 
     def update(self):
