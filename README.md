@@ -1,7 +1,7 @@
-#pyGoL
+# pyGoL
 Conway's Game of Life - written in pygame
 
-##Instructions
+## Instructions
 
 While paused, click cells to draw. 
 
