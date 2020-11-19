@@ -17,6 +17,7 @@ While paused, click cells to draw.
 - numpad-plus - speed up game
 - numpad-minus - speed down game
 - q - quit
+- w - close/quit
 
 
 ## ToDo
