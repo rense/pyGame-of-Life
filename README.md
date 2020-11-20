@@ -1,3 +1,7 @@
+![screenshot](https://github.com/rense/pyGol/blob/master/assets/screenshot.png?raw=true)
+
+
+
 # pyGoL
 Conway's Game of Life - written in pygame
 
