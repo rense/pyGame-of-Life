@@ -138,7 +138,7 @@ class GameOfLife:
             return
         self.state = GAME_STATE_CONFIG
         self.game.tick = 0
-        self.game.grid = self.game.make_grid()
+        self.game.make_grid()
         self.set_title()
         print(GAME_STATES[self.state])
 

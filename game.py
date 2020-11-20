@@ -24,25 +24,24 @@ class Game:
         self.cell_w = self.window_width / self.cols
         self.cell_h = self.window_height / self.rows
 
-        self.grid = self.make_grid()
-        for row in self.grid:
-            for cell in row:
-                cell.neighbours = cell.get_neighbours()
+        self._grid = None
+        self.make_grid()
 
     def make_grid(self):
-        grid = [
+        self.grid = [
             [Cell(self, self.cell_w, self.cell_h, x, y) for x in range(self.cols)] for y in range(self.rows)
         ]
         if TEMPLATE is not None:
             for offset in TEMPLATE_OFFSETS:
-                print(offset)
                 for y, row in enumerate(TEMPLATE):
                     for x, state in enumerate(row):
                         try:
-                            grid[y + offset[0]][x + offset[1]].state = state
+                            self.grid[y + offset[0]][x + offset[1]].state = state
                         except IndexError:
                             pass
-        return grid
+        for row in self.grid:
+            for cell in row:
+                cell.neighbours = cell.get_neighbours()
 
     def update(self):
         self.rect.topleft = self.position
