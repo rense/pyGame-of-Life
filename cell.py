@@ -2,7 +2,14 @@ import pygame
 from pygame.math import Vector2
 from pygame.surface import Surface
 
-from settings import CELL_STATE_DEAD, CELL_STATE_ALIVE, GAME_GRID_COLOR, GAME_CELL_COLOR, GRID_CELL_THICKNESS
+from settings import (
+    CELL_STATE_DEAD,
+    CELL_STATE_ALIVE,
+    GAME_GRID_COLOR,
+    GAME_CELL_COLOR,
+    GRID_CELL_THICKNESS,
+    GAME_WRAPAROUND
+)
 
 
 class Cell:
@@ -42,18 +49,22 @@ class Cell:
 
                 _y = self.y - y
                 _x = self.x - x
-                if _y < 0:
-                    _y += self.game.rows
-                elif _y > self.game.rows - 1:
-                    _y -= self.game.rows
-                if _x < 0:
-                    _x += self.game.cols
-                elif _x > self.game.cols - 1:
-                    _x -= self.game.cols
 
-                cell = self.game.grid[_y][_x]
+                if GAME_WRAPAROUND:
+                    if _y < 0:
+                        _y += self.game.rows
+                    elif _y > self.game.rows - 1:
+                        _y -= self.game.rows
+                    if _x < 0:
+                        _x += self.game.cols
+                    elif _x > self.game.cols - 1:
+                        _x -= self.game.cols
 
-                _neighbours.append(cell)
+                try:
+                    _neighbours.append(self.game.grid[_y][_x])
+                except IndexError:
+                    pass
+
         return _neighbours
 
     @property
@@ -65,7 +76,6 @@ class Cell:
         return count
 
     def toggle(self):
-        print(self.state)
         if self.state == CELL_STATE_DEAD:
             self.revive()
         else:

@@ -115,9 +115,14 @@ class GameOfLife:
         if self.state == GAME_STATE_RUNNING:
             if self.frame_count % (GAME_FPS // self.speed) == 0:
                 self.game.evaluate()
+                self.set_title()
 
     def draw(self):
         self.game.draw()
+
+    def set_title(self):
+        tick = f" - tick {self.game.tick}" if self.game.tick > 0 else ""
+        pygame.display.set_caption(f"{GAME_TITLE}{tick}")
 
     def set_state(self):
         if self.state == GAME_STATE_CONFIG:
@@ -132,7 +137,9 @@ class GameOfLife:
         if self.state == GAME_STATE_CONFIG:
             return
         self.state = GAME_STATE_CONFIG
-        self.game.grid = self.game.make_grid()
+        self.game.tick = 0
+        self.game.make_grid()
+        self.set_title()
         print(GAME_STATES[self.state])
 
     def cursor_on_grid(self, pos):
