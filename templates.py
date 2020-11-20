@@ -82,3 +82,8 @@ TEMPLATE_TOAD = [
     [0, 0, 1, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
 ]
+
+TEMPLATE = TEMPLATE_GOSPER_GLIDER_GUN
+TEMPLATE_OFFSETS = (
+    (35, 20),
+)

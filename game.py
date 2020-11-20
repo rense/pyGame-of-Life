@@ -15,6 +15,8 @@ class Game:
         self.surface = Surface((width, height))
         self.rect = self.surface.get_rect()
 
+        self.tick = 0
+
         self.cols = cols
         self.rows = rows
         self.window_width = width
@@ -31,10 +33,15 @@ class Game:
         grid = [
             [Cell(self, self.cell_w, self.cell_h, x, y) for x in range(self.cols)] for y in range(self.rows)
         ]
-        for offset in [(8, 8), (16, 16), (24, 24)]:
-            for y, row in enumerate(TEMPLATE_REPLICATOR):
-                for x, state in enumerate(row):
-                    grid[y + offset[0]][x + offset[1]].state = state
+        if TEMPLATE is not None:
+            for offset in TEMPLATE_OFFSETS:
+                print(offset)
+                for y, row in enumerate(TEMPLATE):
+                    for x, state in enumerate(row):
+                        try:
+                            grid[y + offset[0]][x + offset[1]].state = state
+                        except IndexError:
+                            pass
         return grid
 
     def update(self):
@@ -50,6 +57,7 @@ class Game:
         self.window.blit(self.surface, (self.position.x, self.position.y))
 
     def evaluate(self):
+        self.tick += 1
         for y, row in enumerate(self.grid):
             for x, cell in enumerate(row):
                 if cell.state == CELL_STATE_ALIVE:
