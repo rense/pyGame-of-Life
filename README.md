@@ -1,9 +1,8 @@
-![screenshot](https://github.com/rense/pyGame-of-Life/blob/master/assets/screenshot.png?raw=true)
-
-
 
 # pyGame of Life
 Conway's Game of Life - written in pygame
+
+![screenshot](https://github.com/rense/pyGame-of-Life/blob/master/assets/screenshot.png?raw=true)
 
 ## Instructions
 
